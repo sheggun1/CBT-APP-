@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8"><title>CBT Exam Portal</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body oncontextmenu="return false;">
+  <div id="login-pane" class="center">
+    <div class="card">
+      <h2 style="margin-bottom: 15px;">Candidate Authentication</h2>
+      <input type="text" id="regNo" placeholder="Registration Number" />
+      <input type="password" id="code" placeholder="Access Code" />
+      <button onclick="login()">Begin Examination</button>
+    </div>
+  </div>
+
+  <div id="exam-pane" class="hidden">
+    <header>
+      <div id="c-name">Candidate</div>
+      <div id="timer" style="font-size: 22px; color: #ffab00; font-weight: bold;">--:--</div>
+      <button onclick="submitExam()" style="width: auto; background: #de350b; padding: 8px 20px;">Submit Exam</button>
+    </header>
+    <div class="content">
+      <main>
+        <h3 id="q-num" style="margin-bottom: 15px;">Question 1</h3>
+        <p id="q-txt" style="font-size: 20px; line-height: 1.5; margin-bottom: 25px;"></p>
+        <div id="opts"></div>
+        <div style="margin-top: 30px; display: flex; gap: 15px;">
+          <button onclick="nav(-1)" id="btn-prev" style="width: 130px;">Previous</button>
+          <button onclick="nav(1)" id="btn-next" style="width: 130px;">Next</button>
+        </div>
+      </main>
+      <aside>
+        <h3>Palette</h3>
+        <div id="palette" class="palette-grid"></div>
+      </aside>
+    </div>
+  </div>
+  <script src="exam.js"></script>
+</body>
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8"><title>CBT Server Console</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="sidebar">
+    <h2>CBT Server</h2>
+    <div id="ip" class="badge">Detecting IP...</div>
+    <hr/>
+    <button onclick="tab('dash')">Dashboard</button>
+    <button onclick="tab('q-import')">Import Questions</button>
+    <button onclick="tab('s-import')">Import Students</button>
+    <button onclick="tab('monitor')">Live Monitor</button>
+  </div>
+  <div class="main">
+    <div id="dash">
+      <h1>Dashboard Overview</h1>
+      <div class="stats">
+        <div class="stat-box">Students<h3 id="s-count">0</h3></div>
+        <div class="stat-box">Questions<h3 id="q-count">0</h3></div>
+        <div class="stat-box">Live Exams<h3 id="e-count">0</h3></div>
+      </div>
+    </div>
+    <div id="q-import" style="display:none;">
+      <h1>Import Questions (.xlsx)</h1>
+      <div class="card">
+        <label>Subject ID: </label><input type="number" id="q-sub" value="1"/><br/><br/>
+        <input type="file" id="q-file" accept=".xlsx,.csv"/><br/><br/>
+        <button onclick="uploadQuestions()" style="padding:10px 15px;">Parse & Import</button>
+      </div>
+    </div>
+    <div id="s-import" style="display:none;">
+      <h1>Import Students (.xlsx)</h1>
+      <div class="card">
+        <input type="file" id="s-file" accept=".xlsx,.csv"/><br/><br/>
+        <button onclick="uploadStudents()" style="padding:10px 15px;">Import Students</button>
+      </div>
+    </div>
+    <div id="monitor" style="display:none;">
+      <h1>Live Session Monitor</h1>
+      <div class="card">
+        <label>Exam ID: </label><input type="number" id="m-exam" value="1"/>
+        <button onclick="loadMonitor()" style="padding:6px 12px;">Refresh</button>
+        <table>
+          <thead><tr><th>Reg No</th><th>Name</th><th>Status</th><th>Score</th><th>Action</th></tr></thead>
+          <tbody id="m-body"></tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  <script src="admin.js"></script>
+</body>
+</html>
